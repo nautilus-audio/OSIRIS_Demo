@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CABBAGE_PRESETS>
+  <PRESET0 PresetName="Default" midiOn="0" combobox="1" volume="1" pAtt="0"
+           pDec="5" pSus="0.5" pRel="0" aAtt="0.0099999997764825820923"
+           aDec="0.5" aSus="0.5" aRel="1" lfo="0" lfo_rate="0" dist="0"
+           cuttoff="20000" fine_tune="0" glide="0" type="1" lfo_wave="1"/>
+  <PRESET1 PresetName="Glide 808" midiOn="0" combobox="1" volume="1" pAtt="0"
+           pDec="1" pSus="0.5" pRel="0.42999997735023498535" aAtt="0.0099999997764825820923"
+           aDec="0.5" aSus="0.5" aRel="1" lfo="0" lfo_rate="0" dist="0.47999998927116394043"
+           cuttoff="20000" fine_tune="0" glide="0" type="4" lfo_wave="1"/>
+  <PRESET2 PresetName="House Bass" midiOn="0" combobox="-1" volume="1" pAtt="0"
+           pDec="1" pSus="0.5" pRel="0.0099999997764825820923" aAtt="0.0099999997764825820923"
+           aDec="0.34000000357627868652" aSus="0" aRel="1" lfo="0" lfo_rate="0"
+           dist="0" cuttoff="20000" fine_tune="0" glide="0" type="3" lfo_wave="1"/>
+  <PRESET3 PresetName="Osiris 3" midiOn="0" combobox="1" volume="1" pAtt="0.0099999997764825820923"
+           pDec="0.97999995946884155273" pSus="0.079999998211860656738"
+           pRel="0.32999998331069946289" aAtt="0.019999999552965164185"
+           aDec="0.5" aSus="0.5" aRel="1" lfo="0" lfo_rate="0" dist="1"
+           cuttoff="20000" fine_tune="0" glide="0.019999999552965164185"
+           type="1" lfo_wave="1"/>
+  <PRESET4 PresetName="Osiris 4" midiOn="0" combobox="1" volume="1" pAtt="0.0099999997764825820923"
+           pDec="5" pSus="0.5" pRel="0.17000000178813934326" aAtt="0.0099999997764825820923"
+           aDec="0.5" aSus="0" aRel="0.25999999046325683594" lfo="0.83999997377395629883"
+           lfo_rate="72.18000030517578125" dist="0" cuttoff="20000" fine_tune="0"
+           glide="0" type="2" lfo_wave="1"/>
+  <PRESET5 PresetName="Osiris 5" midiOn="0" combobox="1" volume="1" pAtt="0.0099999997764825820923"
+           pDec="5" pSus="0.5" pRel="0.0099999997764825820923" aAtt="0.0099999997764825820923"
+           aDec="0.5" aSus="0.5" aRel="1" lfo="0.34000000357627868652" lfo_rate="32.880001068115234375"
+           dist="0" cuttoff="20000" fine_tune="0" glide="0" type="1" lfo_wave="1"/>
+</CABBAGE_PRESETS>
