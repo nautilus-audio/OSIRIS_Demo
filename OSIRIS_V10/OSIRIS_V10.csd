@@ -1,10 +1,7 @@
 <Cabbage>
 form caption("Osiris"), size(870, 700), pluginid("Osiris"), colour("0, 0, 0")
-
-
 image file("speakerBackground.jpg"), bounds(0, 0, 870, 700), outlinecolour("0, 0, 0"), tofront()
 image file("OSIRIS_galactic.png"), bounds(210, 20, 376, 180), tofront(), outlinecolour("0, 0, 0")
-
 keyboard bounds(5, 590, 790, 100), mouseoeverkeycolour("153, 51, 225"), whitenotecolour("0, 230, 0")
 
 ;LED
@@ -24,45 +21,31 @@ vslider bounds(800, 10, 50, 680), channel("volume"), range(0, 1.5, 1, 1, .01), t
 
 ;Pitch Envelope
 groupbox bounds(10, 475, 280, 93), text("Pitch Envelope"), colour(80, 80, 80), alpha(.65)
-
 rslider bounds(12, 500, 65, 65), channel("pAtt"), range(0, 1, 0.01, 1, .01), text("Attack"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(80, 500, 65, 65), channel("pDec"), range(0, 1, 5, 1, .01), text("Decay"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(148, 500, 65, 65), channel("pSus"), range(0, 1, 0.5, 1, .01), text("Sustain"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(216, 500, 65, 65), channel("pRel"), range(0, 1, 0.01, 1, .01), text("Release"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
 
 
 ;Amplitude Envelope
 groupbox bounds(505, 475, 280, 93), text("Amplitude Envelope"), colour(80, 80, 80), alpha(.65)
-
 rslider bounds(512, 500, 65, 65), channel("aAtt"), range(0, 1, 0.01, 1, .01), text("Attack"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(580, 500, 65, 65), channel("aDec"), range(0, 1, .5, 1, .01), text("Decay"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(648, 500, 65, 65), channel("aSus"), range(0, 1, 0.5, 1, .01), text("Sustain"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 rslider bounds(716, 500, 65, 65), channel("aRel"), range(0, 1, 1, 1, .01), text("Release"), trackercolour("0, 180, 0"), colour("10, 10, 10, 0"), imgfile("background", "tp.png")
-
 
 ;LFO Depth Knob
 image file("knob_08_shadow_001.png"), bounds(250, 370, 120, 120), tofront(), outlinecolour("0, 0, 0")
 
 image bounds(250, 370, 120, 120), file("knob_08_001.png"), identchannel("depth")
 rslider bounds(250, 370, 120, 120), channel("lfo"), range(0, 1, 0, 1, .01), text("LFO Depth"), trackercolour("0, 210, 0, 0"), alpha(0),/*imgfile("slider", "Knobby.png")*/ imgfile("background", "tp.png"), ;alpha(0)
-
 chnset   gko, "lfo"
 
 ;LFO Rate Knob
 image file("knob_08_shadow_001.png"), bounds(430, 370, 120, 120), tofront(), outlinecolour("0, 0, 0")
 image bounds(430, 370, 120, 120), file("knob_08_001.png"), identchannel("rate")
-
-
 rslider bounds(450, 370, 100, 100), channel("lfo_rate"), range(0, 220, 0, 1, .01), text("LFO Rate"), trackercolour("0, 210, 0, 0"), /*imgfile("slider", "knob_06_001.png"),*/ imgfile("background", "tp.png"), alpha(0)
 chnset   gkrate, "lfo_rate"
-
-
 
 ;Distortion Knob
 rslider bounds(640, 60, 100, 135), channel("dist"), range(0, 1, 0, 1, .01), text("Distortion"), trackercolour("0, 210, 0, 0"), imgfile("slider", "metalKnob2.png"), imgfile("background", "tp.png"), rotate(0, 57.5, 75), valuetextbox(1), textcolour("0, 210, 0")
@@ -79,15 +62,12 @@ rslider bounds(50, 60, 100, 135), channel("fine_tune"), range(-50, 50, 0, 1, .01
 rslider bounds(50, 230, 100, 135), channel("glide"), range(0, 1, 0, 1, .01), text("Glide"), trackercolour("0, 210, 0, 0"), imgfile("slider", "metalKnob2.png"), imgfile("background", "tp.png"), rotate(0, 57.5, 75), valuetextbox(1), textcolour("0, 210, 0")
 chnset   gkglide, "glide"
 
-
 image file("transparent.svg"), bounds(250, 210, 300, 140)
-
 image file("glassCover.jpg"), bounds(250, 210, 300, 140), tofront()
 
 ;Sample Menu
 combobox bounds(260, 220, 280, 120), alpha(.5), channel("type"), items("SP808_Amp.wav", "BD-808_C1.wav", "House_Bass_C1.wav", "LMD_808.wav", "Zaytoven_808.wav"), align("centre"), colour("0, 255, 0"), fontcolour("0, 0, 0")
 chnset   gktype, "type"
-
 
 ;LFO Wave Menu
 combobox bounds(310, 475, 180, 93), channel("lfo_wave"), items("Sine", "Triangle", "Square (Bipolar)", "Square (Unipolar)", "Saw"), align("centre"), colour("0,0,0"), fontcolour("0, 225, 0")
@@ -106,8 +86,6 @@ sr = 44100
 ksmps = 128
 nchnls = 2
 0dbfs = 1.0
-
-
 
 ;channels
 chn_k "glide",3
@@ -128,8 +106,6 @@ chn_k "pAtt",3
 chn_k "volume",3
 chn_k "fine_tune", 3
 
-
-
 gasig init 0
 gadist init 0
 gafilt init 0
@@ -137,14 +113,8 @@ gabus init 0
 
 gifn	ftgen	0,0, 257, 9, .5,1,270
 
-
-;maxalloc 1, 3
-
 instr 5
-
 kstatus, kchan, kdata1, kdata2 midiin 
-
-;printks2 "god", kstatus
 
 kled chnget "midiOn"
 if changed(kstatus)==1 then
@@ -161,10 +131,8 @@ endif
 endif
 endin
 
-
 instr 1
 ;MAIN, INPUT
-
 ;Midi In 
 icps cpsmidi
 ivel	ampmidi	0.4
@@ -172,45 +140,30 @@ ivel	ampmidi	0.4
 
 gktype init 0
 
-
 ;Amplitude Envelope
-
 gkAAtt = .05
 gkADec = .2
 gkASus = .2
 gkARel = .6
-
-
-
 gkAAtt  = chnget:k("aAtt")
 gkADec  = chnget:k("aDec")	
 gkASus  = chnget:k("aSus")	
 gkARel  = chnget:k("aRel")
 
-
-
-
 gaEnv		linsegr		0,i(gkAAtt)+0.0001, 0.5,i(gkADec),i(gkASus),i(gkARel),0			;AMPLITUDE ENVELOPE
-
 
 ;Pitch Envelope
 gkPAtt = .01
 gkPDec = .05
 gkPSus = .5
 gkPRel = .01
-
 kpenv linsegr		0,i(gkPAtt)+0.0001, 0.5,i(gkPDec),i(gkPSus),i(gkPRel),0			;PITCH ENVELOPE
-
-
 gkPAtt	 = chnget:k("pAtt")
 gkPDec	 = chnget:k("pDec")
 gkPSus	 = chnget:k("pSus")
 gkPRel	 = chnget:k("pRel")
 
-
-
 ktrig	changed	gkAAtt, gkADec, gkASus, gkARel, gkPAtt, gkPDec, gkPSus, gkPRel
-
 
  if ktrig==1 then
   reinit	UpdateEnv
@@ -220,38 +173,28 @@ ktrig	changed	gkAAtt, gkADec, gkASus, gkARel, gkPAtt, gkPDec, gkPSus, gkPRel
  gkADec		=	i(gkADec)
  gkASus		=	i(gkASus)
  gkARel		=	i(gkARel)
- 
  gkPAtt		=	i(gkPAtt)
  gkPDec		=	i(gkPDec)
  gkPSus		=	i(gkPSus)
  gkPRel		=	i(gkPRel)
  rireturn
 
-
-
 ;Fine-Tune Knob
 ktune = chnget:k("fine_tune")
 ktune		port		ktune, .001
-
 ktune invalue "fine tune"
-
-
 
 ;Volume Slider
 kGain 		invalue 	"volume"
 kGain = chnget:k("volume")
 
-
-
 ;Portamento 
-
 gkglide = chnget:k("glide")
 
 ;Convert Note Frequency to Base Frequency 
 kcps	= icps * .083
 kfr = kcps * kpenv
 kfreq		portk		kfr, gkglide
-
 
 galfo init 0
 kres = kfreq + galfo
@@ -299,35 +242,24 @@ asig1, asig2 diskin2 "LMD_808.wav", kres, 0, 0, 0, 2
 ;elseif (gktype == 12) then
 ;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
 
-
 endif
 
 ;glide
 ;portk
 
 	gabus += gadist
-	gabus += gafilt
-	
-
+	gabus += gafilt	
 	gabus += asig1
-	gabus += asig2 
-	
+	gabus += asig2 	
 	gasig += asig1
 	
 	a1 = (asig1*gaEnv) ;* kgain
 	a2 = (asig2*gaEnv) ;* kgain
 	
-	
 	printk2 kGain
 	
-	
-	outs a1*kGain, a2*kGain
-		 
-	
+	outs a1*kGain, a2*kGain			
 endin
-
-
-
 
 instr 2
 ;DISTORTION
@@ -337,12 +269,8 @@ amon, amon monitor
 ;Dist Slider
 kdist 	invalue 	"dist"
 kdist = chnget:k("dist")
-
-
 kdist		port		kdist, .01
-
 k1	line	0, .5, 2	 
- 
 adist 	distort	amon, kdist, gifn
 
 	gadist += adist
@@ -351,40 +279,23 @@ adist 	distort	amon, kdist, gifn
 	
 	outs adist, adist
 	gadist  = 0	;clear
-	
-
 endin
-
-
-
-
 
 instr 3
 ;FILTER
-
-
 amon, amon monitor
 kcut invalue "cuttoff"
 kcut = chnget:k("cuttoff")
-
-
-kcut		port		kcut, .01
-	
+kcut		port		kcut, .01	
 kenv2		linsegr		0, 		 .001, 		1, 	 .01, 	1, 	.1, 0
 	
-	afilt  lowpass2 amon, kcut, 6
-	
+	afilt  lowpass2 amon, kcut, 6	
 	gafilt += afilt
-	
 	outs afilt, afilt
-	
-
 endin
-
 
 ;LFO
 instr 4
-
 gko = chnget:k("lfo")
 gkwave = chnget:k("lfo_wave")
 gkrate = chnget:k("lfo_rate")
@@ -403,9 +314,8 @@ if metro(100) == 1 then
             chnset SMessage, "rate"
         endif
     endif   
-
+    
 galfo lfo gko/*recieve amp*/, gkrate , i(gkwave)
-
 
 ktriglfo	changed	gkwave
  if ktriglfo==1 then
@@ -414,29 +324,20 @@ ktriglfo	changed	gkwave
  UpdateLfo:
  gkwave		=	i(gkwave)
  rireturn
- 
- 
- 
- 
 
 printk2 ktriglfo
-
 endin
-
-
 
 </CsInstruments>
 <CsScore>
 
 ;f 1 0 0 1 "SP808_Amp.wav" 0 0 0
 
-
 i1 0 z
 ;i5 0 z
 i2 0 z
 i3 0 z
 i4 0 z
-
 
 </CsScore>
 </CsoundSynthesizer>
