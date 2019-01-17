@@ -65,15 +65,15 @@ rslider bounds(50, 230, 100, 135), channel("glide"), range(0, 1, 0, 1, .01), tex
 chnset   gkglide, "glide"
 
 ;Sample Menu
-image file("transparent.svg"), bounds(250, 210, 300, 140)
-image file("glassCover.jpg"), bounds(250, 210, 300, 140), tofront()
-combobox bounds(260, 220, 280, 120), alpha(.5), channel("type"), items("SP808_Amp.wav", "BD-808_C1.wav", "House_Bass_C1.wav", "LMD_808.wav", "Zaytoven_808.wav"), align("centre"), colour("0, 255, 0"), fontcolour("0, 0, 0")
+image file("tp2.png"), bounds(260, 220, 280, 120), corners(9)
+image file("gC2.png"), bounds(250, 210, 300, 140), alpha(.9), tofront()
+combobox bounds(260, 220, 280, 120), alpha(.68), channel("type"), items("SP808_Amp.wav", "BD-808_C1.wav", "House_Bass_C1.wav", "LMD_808.wav", "Zaytoven_808.wav"), align("centre"), colour("0, 255, 0"), fontcolour("0, 0, 0")
 chnset   gktype, "type"
 
 
 ;LFO Wave Menu
-combobox bounds(310, 475, 180, 93), channel("lfo_wave"), channeltype("float"), items("Sine", "Triangle", "Square (Bipolar)", "Square (Unipolar)", "Saw"), align("centre"), colour("0,0,0"), fontcolour("0, 225, 0")
-chnset   gkwave, "lfo_wave"
+;combobox bounds(310, 475, 180, 93), channel("lfo_wave"), channeltype("float"), items("Sine", "Triangle", "Square (Bipolar)", "Square (Unipolar)", "Saw"), align("centre"), colour("0,0,0"), fontcolour("0, 225, 0")
+;chnset   gkwave, "lfo_wave"
 </Cabbage>
 <CsoundSynthesizer>
 <CsOptions>
@@ -127,8 +127,6 @@ instr 5
 
 kstatus, kchan, kdata1, kdata2 midiin 
 
-;printks2 "god", kstatus
-
 kled chnget "midiOn"
 if changed(kstatus)==1 then
 
@@ -151,10 +149,8 @@ instr 1
 ;Midi In 
 icps cpsmidi
 ivel	ampmidi	0.4
-;cpsmidinn
 
 gktype init 0
-
 
 ;Amplitude Envelope
 
@@ -167,7 +163,6 @@ gkAAtt  = chnget:k("aAtt")
 gkADec  = chnget:k("aDec")	
 gkASus  = chnget:k("aSus")	
 gkARel  = chnget:k("aRel")
-
 
 gaEnv		linsegr		0,i(gkAAtt)+0.0001, 0.5,i(gkADec),i(gkASus),i(gkARel),0			;AMPLITUDE ENVELOPE
 
@@ -185,11 +180,8 @@ gkPDec	 = chnget:k("pDec")
 gkPSus	 = chnget:k("pSus")
 gkPRel	 = chnget:k("pRel")
 
-
-
+;Update Envelopes
 ktrig	changed	gkAAtt, gkADec, gkASus, gkARel, gkPAtt, gkPDec, gkPSus, gkPRel
-
-printk2 ktrig
 
  if ktrig==1 then
   reinit	UpdateEnv
@@ -210,10 +202,10 @@ printk2 ktrig
 
 ;Fine-Tune Knob
 ktune = chnget:k("fine_tune")
+
+;Convert to Base Frequency, Smooth Out
+ktune = (ktune * 0.0004) + 1
 ktune		port		ktune, .001
-
-ktune invalue "fine tune"
-
 
 
 ;Volume Slider
@@ -221,13 +213,12 @@ kGain 		invalue 	"volume"
 kGain = chnget:k("volume")
 
 
-
 ;Portamento 
-
 gkglide = chnget:k("glide")
 
 ;Convert Note Frequency to Base Frequency 
-kcps	= icps * .083
+kcCon = .083 * ktune
+kcps	= icps * kcCon
 kfr = kcps * kpenv
 kfreq		portk		kfr, gkglide
 
@@ -266,18 +257,6 @@ asig1, asig2 diskin2 "Zaytoven_808.wav", kres, 0, 0, 0, 2
 ;elseif (gktype == 8) then
 ;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
 
-;elseif (gktype == 9) then
-;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
-
-;elseif (gktype == 10) then
-;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
-
-;elseif (gktype == 11) then
-;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
-
-;elseif (gktype == 12) then
-;asig1, asig2 diskin2 "", kres, 0, 0, 0, 2
-
 
 endif
 
@@ -302,21 +281,14 @@ endif
 endin
 
 
-
-
-instr 2
 ;DISTORTION
-
+instr 2
 amon, amon monitor
 
 ;Dist Slider
 kdist 	invalue 	"dist"
 kdist = chnget:k("dist")
-
-
-kdist		port		kdist, .01
-
-k1	line	0, .5, 2	 
+kdist		port		kdist, .01	 
  
 adist 	distort	amon, kdist, gifn
 
@@ -327,35 +299,25 @@ adist 	distort	amon, kdist, gifn
 	outs adist, adist
 	gadist  = 0	;clear
 	
-
 endin
 
 
-
-
-
-instr 3
 ;FILTER
-
+instr 3
 
 amon, amon monitor
 kcut invalue "cuttoff"
 kcut = chnget:k("cuttoff")
 
-
-kcut		port		kcut, .01
-	
+kcut		port		kcut, .01	
 kenv2		linsegr		0, 		 .001, 		1, 	 .01, 	1, 	.1, 0
 	
-	afilt  lowpass2 amon, kcut, 6
-	
+	afilt  lowpass2 amon, kcut, 6	
 	gafilt += afilt
 	
 	outs afilt, afilt
 	
-
 endin
-
 
 ;LFO
 instr 4
@@ -380,7 +342,6 @@ if metro(100) == 1 then
     endif   
 
 galfo lfo gko, gkrate, i(gkwave)
-
 
 ktriglfo	changed	gkwave
  if ktriglfo==1 then
